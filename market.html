@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+    <title>Pharos</title>
+</head>
+
+<body class="bg-black overflow-x-hidden">
+    <header class="px-20 bg-black text-white rounded-b-[40px]">
+		<div class="bx bx-menu" id="menu-icon"></div>
+		<ul class="flex justify-evenly items-center  md:h-[60px] navbar">
+			<li><a href="index.html" class="text-xl font-bold"><span id="logo">logo</span></a></li>
+			<li><a href="guide.html">Guide</a></li>
+			<li><a href="market.html">Market</a></li>
+			<li class="w-max md:w-[14vw] h-[100px] transition-transform duration-300 hover:scale-110 md:self-start relative bottom-[5px] "><a
+					href="play.html" class="block w-full h-full text-5xl bg-[#C300FF] rounded-b-[20px] text-center flex items-center justify-center md:shadow-[0_2px_27px_#C300FF] "
+					style="font-family: 'RubikGlitch'">Play</a></li>
+			<li><a href="my_deck.html">My Deck</a></li>
+			<li><a href="favorite.html">Favorite</a></li>
+			<li><a href="cart.html" id="cart">Cart</a></li>
+		</ul>
+	</header>
+
+        <main>
+            <h1 class="text-[#E1FF00] text-7xl text-center mt-[calc(4rem+5vw)]" style="font-family: Dystopian; 
+           text-shadow: 
+             0 3px 5px #ff00d9,
+             0 0 10px #ff00d9;">
+                Store
+            </h1>
+
+            <section class="mt-20" id="filter_btns">
+                <h2 class="ml-5 md:ml-40 text-white text-3xl">Filter by:</h2>
+                <div class="flex justify-center gap-5 mt-10 flex-wrap">
+                    <button id="com" clicked="true"><span class="inline-block text-2xl bg-green-500 py-3 w-[calc(7rem+5.5vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#40ff00] pointer-events-none">Common</span></button>
+                    <button id="rare" clicked="true"><span class="inline-block text-2xl bg-[#266BFF] py-3 w-[calc(7rem+5.5vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#266BFF] pointer-events-none">Rare</span></button>
+                    <button id="sup_rare" clicked="true"><span class="inline-block text-2xl bg-[#C300FF] py-3 w-[calc(7rem+5.5vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#C210BF] pointer-events-none">Super Rare</span></button>
+                    <button id="ult_rare" clicked="true"><span class="inline-block text-2xl bg-[#DCB801] py-3 w-[calc(7rem+5.5vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#DCB801] pointer-events-none">Ultra Rare</span></button>
+                    <button id="sec_rare" clicked="true"><span class="inline-block text-2xl bg-[#CDCDCD] py-3 w-[calc(7rem+5.5vw)] text-center rounded-[2.5px] shadow-[0_0px_40px_#CDCDCD] pointer-events-none">Secret Rare</span></button>
+                </div>
+            </section>
+
+            <section class="flex flex-wrap gap-8 mt-10 justify-center py-10 md:px-[20vw]" id="btns" >
+                <div class="rounded-[5px] mt-10 card com" id="0">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_102380.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">2</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]">Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card sup_rare" id="1">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_109401.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]">Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card rare" id="2">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_111280.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">2</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center h-max rounded-[2.5px] shadow-[0_3px_20px_#F72449]">Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card com" id="3">
+                    <img class="w-[160px] md:w-[200px] " src="img/Limit_reverse.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">1</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center h-max rounded-[2.5px] shadow-[0_3px_20px_#F72449]">Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card com" id="4">
+                    <img class="w-[160px] md:w-[200px] " src="img/The_13th_Grave.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">2</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card ult_rare" id="5">
+                    <img class="w-[160px] md:w-[200px] " src="img/Ten_Thousand_Dragon.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">8</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card rare" id="6">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_176393.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">4</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card ult_rare" id="7">
+                    <img class="w-[160px] md:w-[200px] " src="img/Jet_Warrior.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">7</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card sup_rare" id="8">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_35699.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card ult_rare" id="9">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_197042.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card sup_rare" id="10">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_191749.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card sup_rare" id="11">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_128454.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card com" id="12">
+                    <img class="w-[160px] md:w-[200px] " src="img/images.ygoprodeck.com_images_cards_126218.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card sec_rare" id="13">
+                    <img class="w-[160px] md:w-[200px] " src="img/Burial_Bicorn.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card ult_rare" id="14">
+                    <img class="w-[160px] md:w-[200px] " src="img/Blaze_Supreme.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+                <div class="rounded-[5px] mt-10 card sec_rare" id="15">
+                    <img class="w-[160px] md:w-[200px] " src="img/Heretical_Phobos_Covos.jpg" alt="">
+                    <div class="flex mt-5 justify-evenly items-center">
+                        <button class="heart h-max mt-[10px]"><img class="w-[25px] pointer-events-none" src="img/heart(empty).png" alt=""></button>
+                        <h2 class="text-white"><span class="price">5</span> $</h2>
+                        <button class="add text-2xl bg-[#F72440] w-[calc(4rem+2vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_#F72449]" >Add</button>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section>
+                <h3 class="text-3xl md:text-5xl text-white text-center">Total cards: <span id="T_number"></span></h3>
+                <br>
+                <h3 class="text-3xl md:text-5xl text-white text-center">Total price: <span id="T_price"></span></h3>
+                <button id="order" class="w-full mt-20 mb-10 md:mb-20"><span class="inline-block text-2xl bg-cyan-500 py-3 w-[calc(7rem+5.5vw)] text-center rounded-[2.5px] shadow-[0_3px_20px_cyan] pointer-events-none">Purchase</span></button>
+            </section>
+
+        </main>
+    </header>

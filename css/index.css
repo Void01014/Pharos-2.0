@@ -1,0 +1,98 @@
+*{
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;
+	list-style: none;
+	scroll-behavior: smooth;
+	font-family:'Agency FB Bold';
+}
+
+ @font-face {
+    font-family: 'Agency FB Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Agency FB Bold'), url('fonts/AGENCYB.woff') format('woff');
+}
+@font-face {
+    font-family: 'Ryzes Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ryzes Regular'), url('fonts/Ryzes-ax92x.woff') format('woff');
+}
+@font-face {
+    font-family: 'RubikGlitch';
+    font-style: normal;
+    font-weight: normal;
+    src: local('RubikGlitch'), url('fonts/RubikGlitch-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Dystopian';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Dystopian'), url('fonts/Dystopian.otf') format('opentype');
+}
+@font-face {
+    font-family: 'GlitchDemo';
+    font-style: normal;
+    font-weight: normal;
+    src: local('GlitchDemo'), url('fonts/GlitchDemo.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Glitch';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Glitch'), url('fonts/GlitchRobot.ttf') format('truetype');
+}
+
+#menu-icon{
+	font-size: 35px;
+	z-index: 10001;
+	cursor: pointer;
+	display: none;
+	background-color: rgba(255, 255, 255, 0.253);
+	backdrop-filter: blur(1px);
+	border-radius: 5px;
+	width: 35px;
+}
+
+@media (max-width: 1041px){
+	#menu-icon{
+		display: block;
+		margin-left: auto;
+	}
+	
+	header{
+		justify-content:space-around;
+		padding: 18px 0;
+	}
+	
+	.home{
+		height: 88vh;
+	}
+	.navbar{
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: 200px;
+		height: 100vh;
+		background: #3b3b3b;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		transition: 0.5s all;
+		margin-top: 0;
+		box-shadow: -1px 0px 10px rgba(255, 255, 255, 0.511);
+	}
+	.navbar a{
+		color: black;
+		display: block;
+		margin: 1.2rem 0;
+		background: none;
+	}
+	.open{
+		right: 0;
+	}
+	.list{
+		width: 50%;
+		margin-bottom: 12px;
+	}
+}
