@@ -43,6 +43,15 @@
     src: local('Glitch'), url('fonts/GlitchRobot.ttf') format('truetype');
 }
 
+main{
+	position: relative;
+	display: grid;
+	grid-template-columns: 1.2fr 4fr 1fr; 
+	height: 100vh;
+	gap: 5px;
+
+}
+
 #menu-icon{
 	display: block;
 	font-size: 35px;
@@ -58,7 +67,9 @@
 header{
 	justify-content:space-around;
 	padding: 18px 0;
-	
+	position: absolute;
+	z-index: 10;
+	right: 0;
 }
 	
 .home{
