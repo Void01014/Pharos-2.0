@@ -16,16 +16,18 @@
 
 <body>
 
-	<header class="header">
-		<a href="#" class="px-30"><span id="logo">logo</span></a>
+	<header class="px-20 bg-black text-white rounded-b-[40px] shadow-[0_3px_20px_#ED27ff61]">
 		<div class="bx bx-menu" id="menu-icon"></div>
-		<ul class="navbar">
+		<ul class="flex justify-evenly items-center md:h-[60px] navbar">
+			<li><a href="index.html" class="text-xl font-bold"><span id="logo">logo</span></a></li>
 			<li><a href="guide.html">Guide</a></li>
-			<li><a href="Market.html">Market</a></li>
-			<a href="play.html" id="Play">Play</a>
+			<li><a href="market.html">Market</a></li>
+			<li class="md:w-[14vw] h-[100px] transition-transform duration-300 hover:scale-110 md:self-start relative bottom-[5px]"><a
+					href="play.html" class="block w-full h-full text-5xl bg-[#C300FF] rounded-b-[20px] text-center flex items-center justify-center md:shadow-[0_2px_27px_#C300FF] "
+					style="font-family: 'RubikGlitch'">Play</a></li>
 			<li><a href="my_deck.html">My Deck</a></li>
 			<li><a href="favorite.html">Favorite</a></li>
-			<a href="cart.html" id="cart">Cart</a>
+			<li><a href="cart.html" id="cart">Cart</a></li>
 		</ul>
 	</header>
 
