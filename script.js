@@ -107,17 +107,35 @@ container.innerHTML = allCardsHTML;
             
             let found = cart.findIndex(obj => obj.id == event.target.closest('.card').id);
             const parent = event.target.closest('.card');
+            c_id = event.target.closest('.card').id;
             const price = Number(parent.querySelector('.price').textContent);
+            let item = cardData.find(obj => obj.id == c_id);
+            const rarity = item.rarity;
+            const img_src = item.image;
+            const att = item.attack;
+            const def = item.defense;
 
+            console.log(img_src);
+            console.log(att);
+            console.log(def);
+
+
+            console.log(rarity)
+            
+            
             if(found >= 0){
                 cart[found].number += 1;
                 cart[found].price += price;
             }
             else{
                 cart.push({
-                    id: event.target.closest('.card').id,
+                    id: c_id,
                     number: 1,
-                    price: price
+                    price: price,
+                    rarity: rarity,
+                    image: img_src,
+                    attack: att,
+                    defense: def 
                 });
             }
         }

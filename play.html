@@ -15,14 +15,14 @@
 </head>
 
 <body class="bg-black">
-	<header class="px-20 bg-black text-white rounded-b-[40px] shadow-[0_3px_20px_#ED27ff61] w-[50%] md:w-[13%] ml-auto">
+	<header class="px-5 bg-black text-white rounded-b-[40px] shadow-[0_3px_20px_#ED27ff61] w-[10%] md:w-[4.8%] ml-auto mr-5">
 		<div class="bx bx-menu" id="menu-icon"></div>
-		<ul class="flex justify-evenly items-center navbar">
-			<li><a href="index.html" class="text-xl font-bold"><img src="img/Logo.png" width="90px" alt="logo"></a></li>
+		<ul class="flex justify-evenly items-center navbar rounded-bl-[100px]">
+			<li><a href="index.html" class="text-xl font-bold"><img src="img/Logo.png" alt="logo" class="w-[35px]"></a></li>
 			<li><a href="guide.html">Guide</a></li>
 			<li><a href="market.html">Market</a></li>
-			<li class="md:w-[14vw] h-[100px] transition-transform duration-300 hover:scale-110 md:self-start relative bottom-[5px]"><a
-					href="play.html" class="block w-full h-full text-5xl bg-[#C300FF] rounded-b-[20px] text-center flex items-center justify-center "
+			<li class="md:w-[14vw] h-max transition-transform duration-300 hover:scale-110 md:self-start relative bottom-[5px]"><a
+					href="play.html" class="block w-full text-3xl md:text-5xl bg-[#C300FF] rounded-b-[20px] text-center flex items-center justify-center "
 					style="font-family: 'RubikGlitch'">Play</a></li>
 			<li><a href="my_deck.html">My Deck</a></li>
 			<li><a href="favorite.html">Favorite</a></li>
@@ -30,26 +30,41 @@
 		</ul>
 	</header>
 
-	<main>
-		<section id="deck" class="bg-cyan-500 overflow-y-scroll">
+	<main class="relative">
+		<section id="deck" class="relative border-r-[2px] border-[#4D0066] shadow-[25px_0_40px_#ED27ff61] z-10">
 
-			<section class="flex flex-wrap gap-8 mt-10 justify-center py-10" id="card-container" >
+			<section class="absolute bg-cyan-500 flex flex-wrap gap-8 bottom-10 justify-center w-full h-max" id="card-container" >
 
 
 			</section>
 			
 		</section>
 		<section id="arena" class="bg-cyan-500">
-			<section id="o_side" class="h-[50%] bg-black"></section>
-			<section id="p_side" class="h-[50%] bg-black "></section>
+			<section id="o_side" class="flex gap-4 md:gap-8 justify-center items-end h-[50%] bg-black pb-5">
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+			</section>
+			<section id="p_side" class="flex gap-4 md:gap-8 justify-center items-start h-[50%] bg-black pt-5">
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+			</section>
 		</section>
-		<section id="Op_hand" class="absolute bg-red-500 top-80">
-			ophand
+		<section id="statue_bar" class="flex justify-center md:items-center flex-wrap  border-l-[2px] border-[#4D0066] shadow-[-20px_0px_40px_#ED27ff61]">
+			<div class="w-full h-max mt-[85px] md:mt-0 text-center text-xl md:text-4xl bg-[#4D0066] shadow-[0_0px_10px_#BF00FF]">
+				<h2 class="text-red-800">8000</h2>
+				<h2 class="text-white">Your Turn</h2>
+				<h2 class="text-green-800">8000</h2>
+			</div>
 		</section>
-		<section id="statue_bar" class="bg-cyan-500">
-			statue
+
+		<section id="op_hand" class="absolute left-[55px] top-0 w-[calc(2rem+7vw)] flex">
+			
 		</section>
-		<section id="hand" class="absolute right-10 bottom-5 w-[130px] flex">
+		<section id="hand" class="absolute right-5 0 md:right-[55px] bottom-5 md:bottom-10 w-[calc(2rem+7vw)] flex">
 			
 		</section>
 	</main>
