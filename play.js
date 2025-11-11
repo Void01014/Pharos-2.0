@@ -41,16 +41,19 @@ let deck_opp = [
 
 // Creating the player's deck
 let deck_cards = [];
+let hand_cards = [];
+let op_hand = [];
+
+// let turn = Math.floor(Math.random() * 2);
+
+let turn = 1;
 
 cardData.forEach(card => {
-    console.log(card.number)
     for(let i = 0; i < card.number; i++){
         deck_cards.push(card.id)
     }
 });
 
-console.log(cardData);
-console.log(deck_cards);
 
 let deck = document.getElementById('card-container');
 let hand_e = document.getElementById('hand');
@@ -86,17 +89,16 @@ function createCardHTML_opp(card) {
 let fact2 = 0; 
 function createCardHTML_deck(card) {
     fact2 = fact2 + 1;
-    console.log(fact2)
     return `
         <div class="absolute w-[calc(2rem+4.5vw)] md:w-[calc(2rem+10vw)]  bottom-0 com bottom-[calc(15px*${fact2/(deck.children.length + 2)})] left-8 cursor-pointer deck_card" id="${card.id}" draggable="false">
-            <div class="relative">
-                <img class="rounded-[5%]" src="/img/back_cover.png" alt="" draggable="false">
+            <div class="relative deck_card">
+                <img class="rounded-[5%] pointer-events-none" src="/img/back_cover.png" alt="" draggable="false">
             </div>
         </div>
     `;
 }
 
-const allCardsHTML = cardData.map(card => createCardHTML_pl(card)).join('');
+const allCardsHTML_pl = hand_cards.map(card => createCardHTML_pl(card)).join('');
 const allCardsHTML_deck = deck_cards.map(card => createCardHTML_deck(card)).join('');
 const allCardsHTML_opp = deck_opp.map(card => createCardHTML_opp(card)).join('');
 
@@ -105,15 +107,12 @@ deck.innerHTML = allCardsHTML_deck;
 const firstCard = createCardHTML_pl(cardData[0]);
 const firstCard_opp = createCardHTML_opp(cardData[0]);
 
-console.log(deck)
-hand_e.innerHTML = allCardsHTML;
+hand_e.innerHTML = allCardsHTML_pl;
 op_hand_e.innerHTML = allCardsHTML_opp;
 
 
 hand_e.addEventListener('mouseover', function () {
     hand_e = document.getElementById('hand');
-    console.log(hand_e);
-    console.log(hand_e.children.length);
     Array.from(hand_e.children).forEach(child => {
         child.classList.add('relative');
     })
@@ -135,57 +134,66 @@ hand_e.addEventListener('mouseout', function () {
 
 
 
-//Drag-n-Drop
+if(turn = 1){
+    let cards = document.querySelectorAll('.card');
+    const slots = Array.from(document.querySelectorAll('#p_side div'));
+    deck.addEventListener('click', (event) => {
+        if(event.target.classList.contains('deck_card')){
+            alert()
+        }
+        console.log(event.target)
+    }) 
 
-let cards = document.querySelectorAll('.card');
-const slots = Array.from(document.querySelectorAll('#p_side div'));
+    
+    
+    //Drag-n-Drop
+    cards.forEach(card =>{
+        card.addEventListener('dragstart', (event) =>{
+            let selected = event.target;
 
-cards.forEach(card =>{
-    card.addEventListener('dragstart', (event) =>{
-        let selected = event.target;
-
-        slots.forEach(slot => {
-            slot.addEventListener('dragover', (dragover) =>{
-                dragover.preventDefault();
-            })
-        });
-
-        slots.forEach(slot => {
-            if(slot.children.length === 0){
-                const popup = document.getElementById('popup');
-                const layer = document.getElementById('layer');
-
-                slot.addEventListener('drop', (drop) =>{
-                    popup.style.display = 'flex';
-                    layer.style.display = 'block'
-                    
-                    popup.addEventListener('click', (event) => {
-                        if(event.target.id == 'ch_att'){
-                            const choice = 'attack';
-                            slot.appendChild(selected);
-                            selected = null;
-                            slot.style.width = 'max-content';
-                            slot.style.height = 'max-content';
-                            
-                        }
-                        else if(event.target.id == 'ch_def'){
-                            const choice = 'attack';
-                            slot.appendChild(selected);
-                            selected = null;
-                            slot.style.transform = 'rotate(90deg) scale(.8)';
-                            slot.style.width = 'max-content';
-                            slot.style.height = 'max-content';
-                        }
-                        popup.style.display = 'none';
-                        layer.style.display = 'none'
-
-                    })
+            slots.forEach(slot => {
+                slot.addEventListener('dragover', (dragover) =>{
+                    dragover.preventDefault();
                 })
-            }
-        });
+            });
 
+            slots.forEach(slot => {
+                if(slot.children.length === 0){
+                    const popup = document.getElementById('popup');
+                    const layer = document.getElementById('layer');
+
+                    slot.addEventListener('drop', (drop) =>{
+                        popup.style.display = 'flex';
+                        layer.style.display = 'block'
+                        
+                        popup.addEventListener('click', (event) => {
+                            if(event.target.id == 'ch_att'){
+                                const choice = 'attack';
+                                slot.appendChild(selected);
+                                selected = null;
+                                slot.style.width = 'max-content';
+                                slot.style.height = 'max-content';
+                                
+                            }
+                            else if(event.target.id == 'ch_def'){
+                                const choice = 'attack';
+                                slot.appendChild(selected);
+                                selected = null;
+                                slot.style.transform = 'rotate(90deg) scale(.8)';
+                                slot.style.width = 'max-content';
+                                slot.style.height = 'max-content';
+                            }
+                            popup.style.display = 'none';
+                            layer.style.display = 'none'
+
+                        })
+                    })
+                }
+            });
+
+        })
     })
-})
+}
  
     
 
