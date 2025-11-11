@@ -62,6 +62,7 @@ container.innerHTML = allCardsHTML;
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let fav = JSON.parse(localStorage.getItem('fav')) || [];
     let collection = JSON.parse(localStorage.getItem('collection')) || [];
+    let total_cards = collection.reduce((sum, item) => sum + (item.number || 0), 0) + cart.reduce((sum, item) => sum + (item.number || 0), 0) ;
 
     //Display total cards and price in car
     let T_n = cart.reduce((sum, card) => sum + card.number, 0);
@@ -103,40 +104,47 @@ container.innerHTML = allCardsHTML;
         const is_plus = event.target.classList.contains("plus");
         const is_minus = event.target.classList.contains("minus");        
 
+        console.log(total_cards)
+
         if(is_add){
-            
-            let found = cart.findIndex(obj => obj.id == event.target.closest('.card').id);
-            const parent = event.target.closest('.card');
-            c_id = event.target.closest('.card').id;
-            const price = Number(parent.querySelector('.price').textContent);
-            let item = cardData.find(obj => obj.id == c_id);
-            const rarity = item.rarity;
-            const img_src = item.image;
-            const att = item.attack;
-            const def = item.defense;
+            total_cards += 1;
+            if(total_cards < 21){
+                let found = cart.findIndex(obj => obj.id == event.target.closest('.card').id);
+                const parent = event.target.closest('.card');
+                c_id = event.target.closest('.card').id;
+                const price = Number(parent.querySelector('.price').textContent);
+                let item = cardData.find(obj => obj.id == c_id);
+                const rarity = item.rarity;
+                const img_src = item.image;
+                const att = item.attack;
+                const def = item.defense;
 
-            console.log(img_src);
-            console.log(att);
-            console.log(def);
+                console.log(img_src);
+                console.log(att);
+                console.log(def);
 
 
-            console.log(rarity)
-            
-            
-            if(found >= 0){
-                cart[found].number += 1;
-                cart[found].price += price;
-            }
-            else{
-                cart.push({
-                    id: c_id,
-                    number: 1,
-                    price: price,
-                    rarity: rarity,
-                    image: img_src,
-                    attack: att,
-                    defense: def 
-                });
+                console.log(rarity)
+                
+                
+                if(found >= 0){
+                    cart[found].number += 1;
+                    cart[found].price += price;
+                }
+                else{
+                    cart.push({
+                        id: c_id,
+                        number: 1,
+                        price: price,
+                        rarity: rarity,
+                        image: img_src,
+                        attack: att,
+                        defense: def 
+                    });
+                }
+            }else{
+                alert("You already have 20 cards, you can't have more");
+                total_cards -= 1;
             }
         }
         else if(is_heart){
@@ -155,30 +163,36 @@ container.innerHTML = allCardsHTML;
             localStorage.setItem('fav', JSON.stringify(fav));
         }
         else if(is_plus){
-            let found = cart.findIndex(obj => obj.id == event.target.closest('.card').id);
-            const parent = event.target.closest('.card');
-            const price = Number(parent.querySelector('.price').textContent);
-            
-           if(cart[found].number < 4){
-                cart[found].number += 1;
-                cart[found].price += price;
-            }
-            else{
-                alert("you can't have more than 4 of one card")
+            total_cards += 1;
+            if(total_cards < 21){
+                let found = cart.findIndex(obj => obj.id == event.target.closest('.card').id);
+                const parent = event.target.closest('.card');
+                const price = Number(parent.querySelector('.price').textContent);
+                
+                if(cart[found].number < 4){
+                    cart[found].number += 1;
+                    cart[found].price += price;
+                }
+                else{
+                    alert("you can't have more than 4 of one card")
+                }
+            }else{
+                alert("You already have 20 cards, you can't have more");
+                total_cards -= 1;
             }
         }
         else if(is_minus){
-            let found = cart.findIndex(obj => obj.id == event.target.closest('.card').id);
-            const parent = event.target.closest('.card');
-            const price = Number(parent.querySelector('.price').textContent);
+                let found = cart.findIndex(obj => obj.id == event.target.closest('.card').id);
+                const parent = event.target.closest('.card');
+                const price = Number(parent.querySelector('.price').textContent);
 
-            if(cart[found].number > 0){
-                cart[found].number -= 1;
-                cart[found].price -= price;
-            }
-            else{
-                alert("you can't go under 0")
-            }
+                if(cart[found].number > 0){
+                    cart[found].number -= 1;
+                    cart[found].price -= price;
+                }
+                else{
+                    alert("you can't go under 0")
+                }
         }
         else{
             return;   
@@ -210,24 +224,20 @@ container.innerHTML = allCardsHTML;
 
     
     order.addEventListener( 'click', (event) =>{
-        let found = collection.filter(colObj => cart.some(cartObj => cartObj.id == colObj.id)).map(obj => obj.id);
+        Array.from(cart).forEach(cart_item =>{
+            let found = collection.find(col_item => col_item.id === cart_item.id);
 
-        if (found.length > 0){
-            found.forEach(id => {
-                let item = collection.find(obj => obj.id === id);
-                const card = document.getElementById(id);
+            if (found){
+                const card = document.getElementById(found.id);
                 const price = Number(card.querySelector('.price').textContent);
                 
-                item.number = (item.number || 0) + 1;
-                item.price = (item.price || 0) + price;
-            });
-        }
-        else{
-            cart.forEach(push_or => {
-                console.log(collection);
-                collection.push(push_or);
-            });
-        }
+                found.number = (found.number || 0) + cart_item.number;
+                found.price = (found.price || 0) + (price*cart_item.number);
+            }
+            else{
+                collection.push(cart_item);
+            }
+        });
         cart.length = 0;
         localStorage.setItem('collection', JSON.stringify(collection));
         localStorage.setItem('cart', JSON.stringify(cart));

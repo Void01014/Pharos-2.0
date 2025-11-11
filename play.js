@@ -40,25 +40,31 @@ let deck_opp = [
 ];
 
 // Creating the player's deck
-let deck_cards = []
+let deck_cards = [];
 
 cardData.forEach(card => {
-    deck_cards.push(card.id)
-})
+    console.log(card.number)
+    for(let i = 0; i < card.number; i++){
+        deck_cards.push(card.id)
+    }
+});
 
-const deck = document.getElementById('card-container');
-const hand_e = document.getElementById('hand');
-const op_hand_e = document.getElementById('op_hand');
+console.log(cardData);
+console.log(deck_cards);
+
+let deck = document.getElementById('card-container');
+let hand_e = document.getElementById('hand');
+let  op_hand_e = document.getElementById('op_hand');
 
 //This is the function that creates cards:
 function createCardHTML_pl(card) {
     return `
-        <div class="absolute bottom-0 card com" id="${card.id} draggable="true">
+        <div class="absolute bottom-0 card com" id="${card.id}" draggable="true">
             <div class="relative" draggable="true">
-                <img class="w-[calc(2rem+7vw)] md:w-[calc(2rem+12vw)] rounded-[10px]" src="${card.image}" alt="" draggable="false">
+                <img class="w-[calc(2rem+7vw)] md:w-[calc(2rem+12vw)] rounded-[5%]" src="${card.image}" alt="" draggable="false">
                 <div class="absolute bottom-0 w-full h-[27%] z-10">
-                    <div class="flex justify-center items-center absolute bottom-0 left-0 h-full w-[50%] bg-[#C300FF] rounded-[10px] shadow-[0_0px_20px_#C210BF]"><p class="attack text-xl md:text-3xl select-none">${card.attack}</p></div>
-                    <div class="flex justify-center items-center absolute bottom-0 right-0 h-full w-[50%] bg-cyan-500 rounded-[10px] shadow-[0_0px_20px_cyan]"><p class="defense text-xl md:text-3xl select-none">${card.defense}</p></div>
+                    <div class="flex justify-center items-center absolute bottom-0 left-0 h-full w-[50%] bg-[#C300FF] rounded-[10%] shadow-[0_0px_20px_#C210BF]"><p class="attack text-xl md:text-3xl select-none">${card.attack}</p></div>
+                    <div class="flex justify-center items-center absolute bottom-0 right-0 h-full w-[50%] bg-cyan-500 rounded-[10%] shadow-[0_0px_20px_cyan]"><p class="defense text-xl md:text-3xl select-none">${card.defense}</p></div>
                 </div>
             </div>
         </div>
@@ -70,7 +76,7 @@ function createCardHTML_opp(card) {
     return `
         <div class="w-[calc(2rem+2.5vw)] md:w-[calc(2rem+6vw)] com rotate-180 top-[calc(15px*${fact1/(op_hand_e.children.length + 2)})]" id="${card.id}" draggable="false">
             <div class="relative">
-                <img class="rounded-[10px]" src="/img/back_cover.png" alt="">
+                <img class="rounded-[5%]" src="/img/back_cover.png" alt="">
             </div>
         </div>
     `;
@@ -80,45 +86,53 @@ function createCardHTML_opp(card) {
 let fact2 = 0; 
 function createCardHTML_deck(card) {
     fact2 = fact2 + 1;
+    console.log(fact2)
     return `
-        <div class="absolute w-[calc(2rem+4.5vw)] md:w-[calc(2rem+10vw)]  bottom-0 com bottom-[calc(15px*${fact2/(deck.children.length + 2)})] left-8" id="${card.id}" draggable="false">
+        <div class="absolute w-[calc(2rem+4.5vw)] md:w-[calc(2rem+10vw)]  bottom-0 com bottom-[calc(15px*${fact2/(deck.children.length + 2)})] left-8 cursor-pointer deck_card" id="${card.id}" draggable="false">
             <div class="relative">
-                <img class="rounded-[10px]" src="/img/back_cover.png" alt="" draggable="false">
+                <img class="rounded-[5%]" src="/img/back_cover.png" alt="" draggable="false">
             </div>
         </div>
     `;
 }
 
 const allCardsHTML = cardData.map(card => createCardHTML_pl(card)).join('');
-const allCardsHTML_deck = cardData.map(card => createCardHTML_deck(card)).join('');
+const allCardsHTML_deck = deck_cards.map(card => createCardHTML_deck(card)).join('');
 const allCardsHTML_opp = deck_opp.map(card => createCardHTML_opp(card)).join('');
 
 deck.innerHTML = allCardsHTML_deck;
-
 
 const firstCard = createCardHTML_pl(cardData[0]);
 const firstCard_opp = createCardHTML_opp(cardData[0]);
 
 console.log(deck)
-hand.innerHTML = allCardsHTML;
-op_hand.innerHTML = allCardsHTML_opp;
+hand_e.innerHTML = allCardsHTML;
+op_hand_e.innerHTML = allCardsHTML_opp;
 
 
-hand.addEventListener('mouseover', function () {
-    Array.from(hand.children).forEach(child => {
+hand_e.addEventListener('mouseover', function () {
+    hand_e = document.getElementById('hand');
+    console.log(hand_e);
+    console.log(hand_e.children.length);
+    Array.from(hand_e.children).forEach(child => {
         child.classList.add('relative');
     })
-    hand.style.height = '80vh';
-    hand.style.overflowY = 'scroll';
-    hand.style.overflowX = 'visible';
+    if(hand_e.children.length > 2){
+        hand_e.style.height = `calc(15vh*${hand.children.length})`;
+        hand_e.style.overflowY = 'scroll';
+    }else if(hand_e.children.length == 2){
+        hand_e.style.height = `calc(10vh*${hand.children.length})`;
+        hand_e.style.overflowY = 'scroll';
+    }
 });
-hand.addEventListener('mouseout', function () {
+hand_e.addEventListener('mouseout', function () {
     Array.from(hand.children).forEach(child => {
         child.classList.remove('relative');
     })
-    hand.style.height = '26vh';
-    hand.style.overflowY = 'visible';
+    hand_e.style.height = '26vh';
+    hand_e.style.overflowY = 'visible';
 });
+
 
 
 //Drag-n-Drop
@@ -138,11 +152,34 @@ cards.forEach(card =>{
 
         slots.forEach(slot => {
             if(slot.children.length === 0){
+                const popup = document.getElementById('popup');
+                const layer = document.getElementById('layer');
+
                 slot.addEventListener('drop', (drop) =>{
-                    slot.appendChild(selected);
-                    selected = null;
-                    slot.style.width = 'max-content'
-                    slot.style.height = 'max-content'
+                    popup.style.display = 'flex';
+                    layer.style.display = 'block'
+                    
+                    popup.addEventListener('click', (event) => {
+                        if(event.target.id == 'ch_att'){
+                            const choice = 'attack';
+                            slot.appendChild(selected);
+                            selected = null;
+                            slot.style.width = 'max-content';
+                            slot.style.height = 'max-content';
+                            
+                        }
+                        else if(event.target.id == 'ch_def'){
+                            const choice = 'attack';
+                            slot.appendChild(selected);
+                            selected = null;
+                            slot.style.transform = 'rotate(90deg) scale(.8)';
+                            slot.style.width = 'max-content';
+                            slot.style.height = 'max-content';
+                        }
+                        popup.style.display = 'none';
+                        layer.style.display = 'none'
+
+                    })
                 })
             }
         });

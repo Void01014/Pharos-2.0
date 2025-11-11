@@ -113,7 +113,7 @@ header{
 
 #hand {
     height: 26vh;
-    overflow-y: hidden;
+    overflow-y: visible;
     overflow-x: visible;
     transition: height 0.3s ease; /* smooth height transition */
 }
@@ -127,3 +127,4 @@ header{
 	position: absolute;
 	box-shadow: 0 0 10px black;
 }
+
