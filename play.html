@@ -4,10 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="play.js" defer></script>
 	<link rel="stylesheet" href="css/play.css">
 	<link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<script src="play.js" defer></script>
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	
 
@@ -31,9 +31,9 @@
 	</header>
 
 	<main class="relative">
-		<section id="deck" class="relative border-r-[2px] border-[#4D0066] shadow-[25px_0_40px_#ED27ff61] z-10">
+		<section id="deck" class="relative flex relative border-r-[2px] border-[#4D0066] shadow-[25px_0_40px_#ED27ff61] z-10">
 
-			<section class="absolute bg-cyan-500 flex flex-wrap gap-8 bottom-10 justify-center w-full h-max" id="card-container" >
+			<section class="bg-cyan-500" id="card-container" >
 
 
 			</section>
@@ -41,30 +41,30 @@
 		</section>
 		<section id="arena" class="bg-cyan-500">
 			<section id="o_side" class="flex gap-4 md:gap-8 justify-center items-end h-[50%] bg-black pb-5">
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot1"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot2"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot3"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot4"></div>
 			</section>
 			<section id="p_side" class="flex gap-4 md:gap-8 justify-center items-start h-[50%] bg-black pt-5">
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
-				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot5"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot6"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot7"></div>
+				<div class="w-[calc(2.5rem+7vw)] h-[calc(3rem+12vw)] border border-solid border-white rounded-[10px]" id="slot8"></div>
 			</section>
 		</section>
 		<section id="statue_bar" class="flex justify-center md:items-center flex-wrap  border-l-[2px] border-[#4D0066] shadow-[-20px_0px_40px_#ED27ff61]">
 			<div class="w-full h-max mt-[85px] md:mt-0 text-center text-xl md:text-4xl bg-[#4D0066] shadow-[0_0px_10px_#BF00FF]">
-				<h2 class="text-red-800">8000</h2>
-				<h2 class="text-white">Your Turn</h2>
-				<h2 class="text-green-800">8000</h2>
+				<h2 class="text-red-800" id="health_opp">8000</h2>
+				<h2 class="text-white" id="turn">Your Turn</h2>
+				<h2 class="text-green-800" id="health">8000</h2>
 			</div>
 		</section>
 
-		<section id="op_hand" class="absolute left-[55px] top-0 w-[calc(2rem+7vw)] flex">
+		<section id="op_hand" class="absolute left-[40px] md:left-[66px] top-5 w-[calc(2rem+7vw)] flex flex-wrap">
 			
 		</section>
-		<section id="hand" class="absolute right-5 0 md:right-[55px] bottom-5 md:bottom-10 w-[calc(2rem+7vw)] flex">
+		<section id="hand" class="absolute flex flex-wrap right-5 0 md:right-[55px] bottom-5 md:bottom-10 w-[calc(2rem+7vw)] h-[26vh] ">
 			
 		</section>
 	</main>

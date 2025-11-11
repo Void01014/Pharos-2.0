@@ -7,6 +7,11 @@
 	scroll-behavior: smooth;
 	scrollbar-width: thin;
 	scrollbar-color: rgb(169, 169, 0) rgba(255, 255, 255, 0);
+	-webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE10+/Edge */
+    user-select: none; 
+
 }
 
  @font-face {
@@ -99,4 +104,26 @@ header{
 }
 .open{
 	right: 0;
+}
+
+.relative{
+	position: relative;
+}
+
+
+#hand {
+    height: 26vh;
+    overflow-y: hidden;
+    overflow-x: visible;
+    transition: height 0.3s ease; /* smooth height transition */
+}
+
+#hand.expanded {
+    height: 80vh;
+    overflow-y: scroll; /* allow scrolling when expanded */
+}
+
+#op_hand > *{
+	position: absolute;
+	box-shadow: 0 0 10px black;
 }
