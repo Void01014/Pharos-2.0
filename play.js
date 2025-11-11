@@ -51,7 +51,7 @@ const hand_e = document.getElementById('hand');
 const op_hand_e = document.getElementById('op_hand');
 
 //This is the function that creates cards:
-function createCardHTML(card) {
+function createCardHTML_pl(card) {
     return `
         <div class="absolute bottom-0 card com" id="${card.id} draggable="true">
             <div class="relative" draggable="true">
@@ -68,7 +68,7 @@ let fact1 = 0;
 function createCardHTML_opp(card) {
     fact1 = fact1 + 1;
     return `
-        <div class="w-[calc(2rem+2.5vw)] md:w-[calc(2rem+6vw)] card com rotate-180 top-[calc(15px*${fact1/(op_hand_e.children.length + 2)})]" id="${card.id}" draggable="false">
+        <div class="w-[calc(2rem+2.5vw)] md:w-[calc(2rem+6vw)] com rotate-180 top-[calc(15px*${fact1/(op_hand_e.children.length + 2)})]" id="${card.id}" draggable="false">
             <div class="relative">
                 <img class="rounded-[10px]" src="/img/back_cover.png" alt="">
             </div>
@@ -81,7 +81,7 @@ let fact2 = 0;
 function createCardHTML_deck(card) {
     fact2 = fact2 + 1;
     return `
-        <div class="absolute w-[calc(2rem+4.5vw)] md:w-[calc(2rem+10vw)]  bottom-0 card com bottom-[calc(15px*${fact2/(deck.children.length + 2)})] left-8" id="${card.id}" draggable="false">
+        <div class="absolute w-[calc(2rem+4.5vw)] md:w-[calc(2rem+10vw)]  bottom-0 com bottom-[calc(15px*${fact2/(deck.children.length + 2)})] left-8" id="${card.id}" draggable="false">
             <div class="relative">
                 <img class="rounded-[10px]" src="/img/back_cover.png" alt="" draggable="false">
             </div>
@@ -89,14 +89,14 @@ function createCardHTML_deck(card) {
     `;
 }
 
-const allCardsHTML = cardData.map(card => createCardHTML(card)).join('');
+const allCardsHTML = cardData.map(card => createCardHTML_pl(card)).join('');
 const allCardsHTML_deck = cardData.map(card => createCardHTML_deck(card)).join('');
 const allCardsHTML_opp = deck_opp.map(card => createCardHTML_opp(card)).join('');
 
 deck.innerHTML = allCardsHTML_deck;
 
 
-const firstCard = createCardHTML(cardData[0]);
+const firstCard = createCardHTML_pl(cardData[0]);
 const firstCard_opp = createCardHTML_opp(cardData[0]);
 
 console.log(deck)
@@ -120,6 +120,35 @@ hand.addEventListener('mouseout', function () {
     hand.style.overflowY = 'visible';
 });
 
+
+//Drag-n-Drop
+
+let cards = document.querySelectorAll('.card');
+const slots = Array.from(document.querySelectorAll('#p_side div'));
+
+cards.forEach(card =>{
+    card.addEventListener('dragstart', (event) =>{
+        let selected = event.target;
+
+        slots.forEach(slot => {
+            slot.addEventListener('dragover', (dragover) =>{
+                dragover.preventDefault();
+            })
+        });
+
+        slots.forEach(slot => {
+            if(slot.children.length === 0){
+                slot.addEventListener('drop', (drop) =>{
+                    slot.appendChild(selected);
+                    selected = null;
+                    slot.style.width = 'max-content'
+                    slot.style.height = 'max-content'
+                })
+            }
+        });
+
+    })
+})
  
     
 
