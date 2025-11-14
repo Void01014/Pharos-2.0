@@ -313,7 +313,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     }
                     else {
                         console.log("Bot is deciding its move...");
-                        this.botMainPhase();
+                        this.botMainPhase(bot_hand);
                     }
                     end_turn.onclick = () => {
                         end_turn.classList.add('opacity-50');
@@ -378,7 +378,6 @@ window.addEventListener("DOMContentLoaded", () => {
                     else {
                         console.log("Bot's turn ended");
                         this.startTurn('player');
-                        // Bot logic this.botBattlePhase();
                     }
                     break;
             }
@@ -411,16 +410,42 @@ window.addEventListener("DOMContentLoaded", () => {
                 this.transitionTo(Phases.MAIN);
 
             }
-},
+        },
 
-    botMainPhase: function (bot_hand) {
-        
-    },
+        botMainPhase: function (bot_hand) {
+            console.log("Bot Main Phase: Looking for a card to summon.");
 
-    botBattlePhase: function () {
-        //Deciding which cards to use
-    }
-    };
+            const botSlots = Array.from(document.querySelectorAll('#op_side div'));
+            const emptySlot = botSlots.find(slot => slot.children.length === 0);
+
+            if (bot_hand.length > 0 && emptySlot) {
+                let cardToSummon = bot_hand.shift(); // .shift() removes the first item and returns it
+                console.log("Bot summons:", cardToSummon.name);
+
+                let cardHTML = createCardHTML_pl(cardToSummon);
+                emptySlot.innerHTML = cardHTML;
+
+                let summonedElement = emptySlot.querySelector('.card');
+                summonedElement.setAttribute('state', 'attack');
+                summonedElement.style.position = 'relative'; // Match your player's summon style
+                emptySlot.style.height = 'max-content'; // Match your player's summon style
+
+                allCardsHTML_opp = bot_hand.map(card => createCardHTML_opp(card)).join('');
+                op_hand_e.innerHTML = allCardsHTML_opp;
+
+            } else {
+                console.log("Bot has no cards to summon or no empty slots.");
+            }
+
+            setTimeout(() => {
+                this.transitionTo(Phases.BATTLE);
+            }, 1500); // 1.5 second delay
+        },
+
+        botBattlePhase: function () {
+            
+        }
+};
 
 // Start the game
 turnManager.startTurn('bot');
