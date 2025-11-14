@@ -29,9 +29,12 @@
 			<li><a href="cart.html" id="cart">Cart</a></li>
 		</ul>
 	</header>
-
+	
 	<main class="relative">
-	<div class="absolute flex items-center justify-center bg-green-500 border border-[2px] border-white text-center w-[calc(1rem+4vw)] h-[calc(1rem+4vw)] transform translate-y-[50%] bottom-[50%] right-[calc(22.5vw-35px)] rounded-[100%] text-xl md:text-2xl shadow-[0_0_15px_#00ff69] text-white opacity-50 z-100"><h2 id="end_turn">End</h2></div>
+		<div class="absolute flex justify-center items-center h-20 w-full top-[50%] transform translate-y-[-50%] z-50 opacity-0 pointer-events-none" id="phase_message" aria-hidden="true">
+			<h1 class="text-6xl">Main phase</h1>
+		</div>
+		<div class="absolute flex items-center justify-center bg-green-500 border border-[2px] border-white text-center w-[calc(1rem+4vw)] h-[calc(1rem+4vw)] transform translate-y-[50%] bottom-[50%] right-[calc(22.5vw-35px)] rounded-[100%] text-xl md:text-2xl shadow-[0_0_15px_#00ff69] text-white opacity-50 z-50" id="end_turn"><h2>End</h2></div>
 
 		<div class="absolute left-0 w-[100vw] h-[100vh] bg-[#0000008d] hidden z-50" id="layer"></div>
 		<aside class="flex gap-[10%] absolute top-[50%] left-[50%] transform -translate-x-[50%] w-80 h-30 bg-black items-center p-5 rounded-xl shadow-[0_0_20px_#DD27ffff] hidden z-50" id="popup">
@@ -47,7 +50,7 @@
 			</section>
 			
 		</section>
-		<section id="arena" class="bg-cyan-500 relative -z-10">
+		<section id="arena" class="bg-cyan-500 relative 10">
 			<section id="o_side" class="flex gap-4 md:gap-8 justify-center items-end h-[50%] bg-black pb-5">
 				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] border border-solid border-white rounded-[10px]" id="slot1"></div>
 				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] border border-solid border-white rounded-[10px]" id="slot2"></div>
@@ -55,24 +58,25 @@
 				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] border border-solid border-white rounded-[10px]" id="slot4"></div>
 			</section>
 			<section id="p_side" class="flex gap-4 md:gap-8 justify-center items-start h-[50%] bg-black pt-5">
-				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] border border-solid border-white rounded-[10px]" id="slot5"></div>
+				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] bg-black border border-solid border-white rounded-[10px] cursor-pointer" id="slot5"></div>
 				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] border border-solid border-white rounded-[10px]" id="slot6"></div>
 				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] border border-solid border-white rounded-[10px]" id="slot7"></div>
 				<div class="w-[calc(2rem+7vw)] md:w-[calc(2.5rem+7vw)] h-[calc(2rem+12vw)] border border-solid border-white rounded-[10px]" id="slot8"></div>
 			</section>
 		</section>
-		<section id="statue_bar" class="flex justify-center md:items-center flex-wrap  border-l-[2px] border-[#4D0066] shadow-[-20px_0px_40px_#ED27ff61]">
-			<div class="w-full h-max mt-[85px] md:mt-0 text-center text-xl md:text-4xl bg-[#4D0066] shadow-[0_0px_10px_#BF00FF]">
+		<section id="statue_bar" class="flex justify-center md:items-center flex-wrap  border-l-[2px] border-[#4D0066] shadow-[-20px_0px_40px_#ED27ff61] z-10">
+			<div class="w-full h-max mt-[85px] md:mt-0 text-center text-xl md:text-4xl bg-[#4D0066] shadow-[0_0px_20px_#BF00FF]">
 				<h2 class="text-red-800" id="health_opp">8000</h2>
 				<h2 class="text-white" id="turn">Your Turn</h2>
 				<h2 class="text-green-800" id="health">8000</h2>
 			</div>
+			<section id="hand" class="absolute flex flex-wrap right-5 0 md:right-[55px] bottom-5 md:bottom-10 w-[calc(2rem+7vw)] h-[26vh]">
+			
+			</section>
+
 		</section>
 
 		<section id="op_hand" class="absolute left-[40px] md:left-[66px] top-5 w-[calc(2rem+7vw)] flex flex-wrap">
-			
-		</section>
-		<section id="hand" class="absolute flex flex-wrap right-5 0 md:right-[55px] bottom-5 md:bottom-10 w-[calc(2rem+7vw)] h-[26vh] ">
 			
 		</section>
 	</main>
