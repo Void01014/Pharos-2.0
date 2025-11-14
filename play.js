@@ -443,7 +443,8 @@ window.addEventListener("DOMContentLoaded", () => {
         },
 
         botBattlePhase: function () {
-            
+            this.transitionTo(Phases.END);
+
         }
 };
 
